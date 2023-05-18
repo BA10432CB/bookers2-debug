@@ -33,4 +33,16 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
+  def self.looks(searches, keywords)
+    if searches == 'perfect_match'
+      @user = User.where('name LIKE(?)', "#{keywords}")
+    elsif searches == 'front_match'
+      @user = User.where('name LIKE(?)', "%#{keywords}")
+    elsif searches == 'back_match'
+      @user = User.where('name LIKE(?)', "#{keywords}%")
+    else
+      @user = User.where('name LIKE(?)', "%#{keywords}%")
+    end
+  end
+
 end
