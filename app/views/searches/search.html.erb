@@ -1,13 +1,7 @@
-<div class='container px-5 px-sm-0'>
-  <div class='row'>
-    <div class='col-md-12'>
-      <% if @range == "User" %>
-        <h2>Users search for </h2>
-        <%= render 'users/index', users: @users %>
-      <% else %>
-        <h2>Books search for</h2>
-        <%= render 'books/index', books: @books %>
-      <% end %>
-    </div>
-  </div>
-</div>
+<% if @model == 'user' %>
+	<h3>Users search for "<%= @content %>"</h3>
+  <%= render 'users/index', users: @records %>
+<% elsif @model == 'book' %>
+	<h3>Books search for "<%= @content %>"</h3>
+  <%= render 'books/index', books: @records %>
+<% end %>
