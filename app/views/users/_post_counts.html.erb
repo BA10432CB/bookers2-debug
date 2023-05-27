@@ -1,0 +1,50 @@
+<div class="table-width">
+  <h1>投稿数の前日比・前週比</h1>
+  <table class='table table-bordered'>
+    <thead>
+      <tr>
+        <th>今日の投稿数</th>
+        <th>前日の投稿数</th>
+        <th>前日比</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @today_post.count %></td>
+        <td><%= @yesterday_post.count %></td>
+        <td>
+          <% if @yesterday_post.count == 0 %>
+            0 post
+          <% else %>
+            <% @the_day_before = @today_post.count / @yesterday_post.count %>
+            <%= (@the_day_before * 100).round %>%
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class='table table-bordered'>
+    <thead>
+      <tr>
+        <th>今週の投稿数</th>
+        <th>前週の投稿数</th>
+        <th>前週比</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @this_week_post.count %></td>
+        <td><%= @last_week_post.count %></td>
+        <td>
+          <% if @last_week_post.count == 0 %>
+            0 post
+          <% else %>
+            <% @the_week_before = @this_week_post.count / @last_week_post.count %>
+            <%= (@the_week_before * 100).round %>%
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
