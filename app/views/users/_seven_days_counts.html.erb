@@ -1,0 +1,33 @@
+<div class="table-width">
+  <h1>7日間分の投稿数</h1>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>6日前</th>
+        <th>5日前</th>
+        <th>4日前</th>
+        <th>3日前</th>
+        <th>2日前</th>
+        <th>1日前</th>
+        <th>今日</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @six_days_ago_post.count %></td>
+        <td><%= @five_days_ago_post.count %></td>
+        <td><%= @four_days_ago_post.count %></td>
+        <td><%= @three_days_ago_post.count %></td>
+        <td><%= @two_days_ago_post.count %></td>
+        <td><%= @yesterday_post.count %></td>
+        <td><%= @today_post.count %></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="posts-graph">
+    <label class="posts-count">7日間の投稿数の比較</label>
+    <div class="graph" data-turbolinks='false'>
+      <%= line_chart @books_count, download: true, colors: ['#ff0000'] %>
+    </div>
+  </div>
+</div>
