@@ -11,6 +11,13 @@
       <%= render 'books/index',books: @books %>
       <%= render 'post_counts' %>
       <%= render 'seven_days_counts' %>
+      <%= render 'post_search', user: @user %>
+      
+      <div id='search_result'>
+        <% if @search_book.present? %>
+          <%= render 'search_result', search_book: @search_book %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
