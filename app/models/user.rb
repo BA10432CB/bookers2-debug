@@ -22,6 +22,9 @@ class User < ApplicationRecord
   has_many :chats, dependent: :destroy
   has_many :view_counts, dependent: :destroy
   has_one_attached :profile_image
+  
+  has_many :group_users
+  has_many :groups, through: :group_users
 
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :introduction, length: { maximum: 50 }
@@ -52,6 +55,12 @@ class User < ApplicationRecord
       User.where('name LIKE ?', '%' + content)
     else
       User.where('name LIKE ?', '%' + content + '%')
+    end
+  end
+
+  def self.guest
+    find_or_create_by!(name: 'guestuser', email: 'guest@example.com') do |user| #guestuserとしてnameを固定User.guestの記述が可能になる
+      user.password = SecureRandom.urlsafe_base64 #ランダムな文字列を生成するRubyのメソッドの一種
     end
   end
 end
