@@ -24,6 +24,9 @@
             <%= render "book_comments/counter", book: @book %>
           </td>
           <td>
+            <%= render "static_rate", book: @book %>
+          </td>
+          <td>
             <%= render "books/view_counts", book: @book %>
           </td>
           <% if @book.user == current_user %>
