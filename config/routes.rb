@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'categories/show'
   get 'chats/show'
   devise_for :users
 
@@ -9,6 +10,9 @@ Rails.application.routes.draw do
     resources :book_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
+  
+  get 'category_searches/search', to: 'category_searches#search', as: 'category_search'
+  
   resources :users, only: [:index,:show,:edit,:update] do
     resource :relationships, only: [:create, :destroy]
   	get 'followings' => 'relationships#followings', as: 'followings'

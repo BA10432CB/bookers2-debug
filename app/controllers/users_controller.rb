@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @six_days_ago_post = @books.created_six_days_ago
     @this_week_post = @books.created_this_week
     @last_week_post = @books.created_last_week
-    @books_count = @books.group_by_day(:created_at).size
+    # @books_count = @books.group_by_day(:created_at).size
   end
 
   def index
@@ -59,7 +59,7 @@ class UsersController < ApplicationController
       redirect_to user_path(current_user)
     end
   end
-  
+
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.name == "guestuser"
